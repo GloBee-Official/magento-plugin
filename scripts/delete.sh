@@ -107,7 +107,7 @@ then
     then
         echo "Old BitPay plugin files are still present in your Magento directory. This is likely due to this script not having permissions to delete them. You can fix this by running this script as superuser or you can remove the files by hand."
     else
-        echo "Good!  I didn't find any remaining old BitPay plugin files in your Magento directory!  You can now safely install the new BitPay plugin."
+        echo "Good!  I didn't find any remaining old GloBee plugin files in your Magento directory!  You can now safely install the new GloBee plugin."
     fi
     echo "Process complete."
     echo ""
@@ -131,7 +131,7 @@ else
                 echo "  $filename does not exist - skipping!"
             fi
         done
-        echo "File removal process complete. Checking to make sure your Magento environment was completely cleaned of old BitPay files..."
+        echo "File removal process complete. Checking to make sure your Magento environment was completely cleaned of old GloBee files..."
         echo ""
         for filename in "${old_files[@]}"
         do
@@ -146,9 +146,9 @@ else
         done
         if [ $CLEAN = "false" ]
         then
-            echo "Old BitPay plugin files are still present in your Magento directory. This is likely due to this script not having permissions to delete them. You can fix this by running this script as superuser or you can remove the files by hand."
+            echo "Old GloBee plugin files are still present in your Magento directory. This is likely due to this script not having permissions to delete them. You can fix this by running this script as superuser or you can remove the files by hand."
         else
-            echo "Good!  I didn't find any remaining old BitPay plugin files in your Magento directory!  You can now safely install the new BitPay plugin."
+            echo "Good!  I didn't find any remaining old GloBee plugin files in your Magento directory!  You can now safely install the new GloBee plugin."
         fi
         echo "Process complete."
         echo ""
