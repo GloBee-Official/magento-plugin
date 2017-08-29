@@ -103,7 +103,7 @@ class Bitpay_Core_Model_Method_Bitcoin extends Mage_Payment_Model_Method_Abstrac
              * Merchant must goto their account and create a pairing code to
              * enter in.
              */
-            $this->debugData('[ERROR] In Bitpay_Core_Model_Method_Bitcoin::canUseCheckout(): There was an error retrieving the token store param from the database or this Magento store does not have a BitPay token.');
+            $this->debugData('[ERROR] In Bitpay_Core_Model_Method_Bitcoin::canUseCheckout(): There was an error retrieving the token store param from the database or this Magento store does not have a GloBee token.');
 
             return false;
         }
@@ -133,19 +133,19 @@ class Bitpay_Core_Model_Method_Bitcoin extends Mage_Payment_Model_Method_Abstrac
         $client  = \Mage::helper('bitpay')->getBitpayClient();
 
         if (false === isset($client) || true === empty($client)) {
-            $this->debugData('[ERROR] In Bitpay_Core_Model_Method_Bitcoin::fetchInvoice(): could not obtain BitPay client.');
-            throw new \Exception('In Bitpay_Core_Model_Method_Bitcoin::fetchInvoice(): could not obtain BitPay client.');
+            $this->debugData('[ERROR] In Bitpay_Core_Model_Method_Bitcoin::fetchInvoice(): could not obtain GloBee client.');
+            throw new \Exception('In Bitpay_Core_Model_Method_Bitcoin::fetchInvoice(): could not obtain GloBee client.');
         } else {
-            $this->debugData('[INFO] In Bitpay_Core_Model_Method_Bitcoin::fetchInvoice(): obtained BitPay client successfully.');
+            $this->debugData('[INFO] In Bitpay_Core_Model_Method_Bitcoin::fetchInvoice(): obtained GloBee client successfully.');
         }
 
         $invoice = $client->getInvoice($id);
 
         if (false === isset($invoice) || true === empty($invoice)) {
-            $this->debugData('[ERROR] In Bitpay_Core_Model_Method_Bitcoin::fetchInvoice(): could not retrieve invoice from BitPay.');
-            throw new \Exception('In Bitpay_Core_Model_Method_Bitcoin::fetchInvoice(): could not retrieve invoice from BitPay.');
+            $this->debugData('[ERROR] In Bitpay_Core_Model_Method_Bitcoin::fetchInvoice(): could not retrieve invoice from GloBee.');
+            throw new \Exception('In Bitpay_Core_Model_Method_Bitcoin::fetchInvoice(): could not retrieve invoice from GloBee.');
         } else {
-            $this->debugData('[INFO] In Bitpay_Core_Model_Method_Bitcoin::fetchInvoice(): successfully retrieved invoice id ' . $id . ' from BitPay.');
+            $this->debugData('[INFO] In Bitpay_Core_Model_Method_Bitcoin::fetchInvoice(): successfully retrieved invoice id ' . $id . ' from GloBee.');
         }
 
         return $invoice;
@@ -222,10 +222,10 @@ class Bitpay_Core_Model_Method_Bitcoin extends Mage_Payment_Model_Method_Abstrac
         $invoice = new Bitpay\Invoice();
 
         if (false === isset($invoice) || true === empty($invoice)) {
-            $this->debugData('[ERROR] In Bitpay_Core_Model_Method_Bitcoin::initializeInvoice(): could not construct new BitPay invoice object.');
-            throw new \Exception('In Bitpay_Core_Model_Method_Bitcoin::initializeInvoice(): could not construct new BitPay invoice object.');
+            $this->debugData('[ERROR] In Bitpay_Core_Model_Method_Bitcoin::initializeInvoice(): could not construct new GloBee invoice object.');
+            throw new \Exception('In Bitpay_Core_Model_Method_Bitcoin::initializeInvoice(): could not construct new GloBee invoice object.');
         } else {
-            $this->debugData('[INFO] In Bitpay_Core_Model_Method_Bitcoin::initializeInvoice(): constructed new BitPay invoice object successfully.');
+            $this->debugData('[INFO] In Bitpay_Core_Model_Method_Bitcoin::initializeInvoice(): constructed new GloBee invoice object successfully.');
         }
 
         $invoice->setFullNotifications(true);
@@ -286,8 +286,8 @@ class Bitpay_Core_Model_Method_Bitcoin extends Mage_Payment_Model_Method_Abstrac
         $buyer = new Bitpay\Buyer();
 
         if (false === isset($buyer) || true === empty($buyer)) {
-            $this->debugData('[ERROR] In Bitpay_Core_Model_Method_Bitcoin::addBuyerInfo(): could not construct new BitPay buyer object.');
-            throw new \Exception('In Bitpay_Core_Model_Method_Bitcoin::addBuyerInfo(): could not construct new BitPay buyer object.');
+            $this->debugData('[ERROR] In Bitpay_Core_Model_Method_Bitcoin::addBuyerInfo(): could not construct new GloBee buyer object.');
+            throw new \Exception('In Bitpay_Core_Model_Method_Bitcoin::addBuyerInfo(): could not construct new GloBee buyer object.');
         }
 
 
@@ -371,8 +371,8 @@ class Bitpay_Core_Model_Method_Bitcoin extends Mage_Payment_Model_Method_Abstrac
         $currency = new Bitpay\Currency();
 
         if (false === isset($currency) || true === empty($currency)) {
-            $this->debugData('[ERROR] In Bitpay_Core_Model_Method_Bitcoin::addCurrencyInfo(): could not construct new BitPay currency object.');
-            throw new \Exception('In Bitpay_Core_Model_Method_Bitcoin::addCurrencyInfo(): could not construct new BitPay currency object.');
+            $this->debugData('[ERROR] In Bitpay_Core_Model_Method_Bitcoin::addCurrencyInfo(): could not construct new GloBee currency object.');
+            throw new \Exception('In Bitpay_Core_Model_Method_Bitcoin::addCurrencyInfo(): could not construct new GloBee currency object.');
         }
 
         //$currency->setCode($order->getOrderCurrencyCode());
@@ -402,8 +402,8 @@ class Bitpay_Core_Model_Method_Bitcoin extends Mage_Payment_Model_Method_Abstrac
         $item = new \Bitpay\Item();
 
         if (false === isset($item) || true === empty($item)) {
-            $this->debugData('[ERROR] In Bitpay_Core_Model_Method_Bitcoin::addPriceInfo(): could not construct new BitPay item object.');
-            throw new \Exception('In Bitpay_Core_Model_Method_Bitcoin::addPriceInfo(): could not construct new BitPay item object.');
+            $this->debugData('[ERROR] In Bitpay_Core_Model_Method_Bitcoin::addPriceInfo(): could not construct new GloBee item object.');
+            throw new \Exception('In Bitpay_Core_Model_Method_Bitcoin::addPriceInfo(): could not construct new GloBee item object.');
         }
 
         $item->setPrice($amount);
